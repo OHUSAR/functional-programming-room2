@@ -1,10 +1,12 @@
-def get_input(text):
+from pure_functions.post import post
+
+
+def get_input(text = ''):
     return input(text)
 
-
-def answer():
-    ans = get_input('enter yes or no')
-    if ans == 'yes':
-        return 'you entered yes'
-    if ans == 'no':
-        return 'you entered no'
+def main():
+    state = {}
+    ans = get_input()
+    
+    result = post(ans)
+    update(result)
