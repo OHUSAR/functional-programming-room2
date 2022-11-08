@@ -34,7 +34,6 @@ class Test(TestCase):
     def test_convert_input_to_command(self):
         self.assertEqual(convert_input_to_command('Bob -> Message'), 'post')
         self.assertEqual(convert_input_to_command('Bob'), 'read')
-        self.assertEqual(convert_input_to_command('exit'), 'exit')
     
     def test_convert_input_to_arguments(self):
         self.assertEqual(convert_input_to_arguments('Bob -> Message', 'post'), ['Bob', 'Message'])

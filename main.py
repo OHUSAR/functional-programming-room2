@@ -1,20 +1,15 @@
-from pure_functions.post import post
-from pure_functions.update_state import update_state
-from pure_functions.convert_input_to_command import convert_input_to_command
-from pure_functions.convert_input_to_arguments import convert_input_to_arguments
-
+from apply_user_input import apply_user_input
 
 def main():
     state = {}
     while True:
         user_input = input()
-        command = convert_input_to_command(user_input)
-        args = convert_input_to_arguments(user_input, command)
-        if command == 'read':
-            for message in state[args[0]][::-1]:
-                print(f"{args[0]} posted {message}")
-        elif command == 'exit':
+        if user_input == 'exit':
             break
-        else:
-            state = update_state(state, post(*args))
+        
+        new_state, message_to_print = apply_user_input(user_input, state)
+
+        state = new_state
+        if message_to_print is not None:
+            print(message_to_print)
         
