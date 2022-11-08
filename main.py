@@ -1,4 +1,5 @@
 from pure_functions.post import post
+from pure_functions.update_state import update_state
 
 
 def get_input(text = ''):
@@ -6,7 +7,13 @@ def get_input(text = ''):
 
 def main():
     state = {}
-    ans = get_input()
-    
-    result = post(ans)
-    update(result)
+    while True:
+        command = get_input()
+
+        if command == 'read':
+            print(state)
+        elif command == 'exit':
+            break
+        else:
+            state = update_state(state, post(command))
+        
