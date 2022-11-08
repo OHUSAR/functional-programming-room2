@@ -1,13 +1,6 @@
-from unittest.mock import patch
 from unittest import TestCase
-
-from main import answer
+from pure_functions.post import post
 
 class Test(TestCase):
-    @patch('main.get_input', return_value='yes')
-    def test_answer_yes(self, input):
-        self.assertEqual(answer(), 'you entered yes')
-
-    @patch('main.get_input', return_value='no')
-    def test_answer_no(self, input):
-        self.assertEqual(answer(), 'you entered no')
+    def test_post(self):
+        self.assertEqual(post('Bob My First Post'), {'Bob': 'My First Post'})
